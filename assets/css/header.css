@@ -1,21 +1,18 @@
 .header {
-  height: 180px;
-  border-bottom: 1px #ccc dashed;
+  height: 156px;
+  border-bottom: 1px #a866ee solid;
   font-family: "Noto Sans", sans-serif;
   background-color: #fff;
   position: sticky;
   position: -webkit-sticky;
+  z-index: 1;
   top: 0;
-}
-.header-banner {
-  height: 160px;
-  outline: 1px red dashed;
+  box-shadow: 4px 12px 20px 0 rgba(229, 209, 250, 0.2);
 }
 .header-logo {
   height: 80px;
   min-width: 80px;
   max-width: 180px;
-  outline: 1px red dashed;
   background: #fff url("../img/header-logo.png") no-repeat left center;
   background-size: 200px 200px;
   background-origin: border-box;
@@ -72,10 +69,9 @@
   background-color: #e5d1fa;
 }
 .header-navbar {
-  margin-top: 20px;
+  margin-top: 12px;
   height: 48px;
   color: var(--pri-clr);
-  outline: 1px red dashed;
   overflow: hidden;
   display: flex;
   justify-content: flex-start;
@@ -84,7 +80,7 @@
   display: inline-block;
   width: 48px;
   height: 100%;
-  outline: 1px red dashed;
+  margin-left: 16px;
 }
 .header-identifer {
   display: flex;
@@ -190,7 +186,7 @@
   flex-wrap: wrap;
   justify-content: center;
   flex-grow: 1;
-  margin: 0 148px 0 100px;
+  margin: 0 164px 0 116px;
   line-height: 48px;
   font-size: 2rem;
   min-width: 520px;
@@ -206,7 +202,6 @@
   display: inline-block;
   height: 48px;
   line-height: 48px;
-  outline: 1px blue dashed;
   position: relative;
 }
 .ctg-item__link:hover::before {

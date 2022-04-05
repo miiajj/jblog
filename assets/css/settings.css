@@ -1,0 +1,37 @@
+.settings-navbar {
+  float: left;
+  position: sticky;
+  position: -webkit-sticky;
+  z-index: 1;
+  top: 160px;
+  left: 0;
+  padding-top: 60px;
+  padding-right: 80px;
+  width: 280px;
+  overflow: hidden;
+}
+.settings-item {
+  padding: 12px 24px;
+  font-size: 1.6rem;
+  border-left: 2px transparent solid;
+  border-right: 1px #000 solid;
+  color: #333;
+  cursor: pointer;
+}
+.settings-item:not(.active):hover {
+  color: #8930e8;
+}
+.settings-item.active {
+  border-left: 2px #a866ee solid;
+  color: #4f1091;
+  font-weight: 500;
+}
+.settings-ctner {
+  margin: 0 80px 0 280px;
+  padding: 80px;
+  height: 600px;
+  border: 2px #e5d1fa solid;
+  border-radius: 0 24px;
+}
+
+/*# sourceMappingURL=settings.css.map */

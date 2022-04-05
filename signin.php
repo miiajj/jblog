@@ -25,7 +25,8 @@ if(isset($_POST['signin'])) {
 			$query_identify = "select hex(id_bin) as id_bin, username, password, lname, fname from accounts where username = '$username'";
 			$result_password = mysqli_query($conn, $query_identify);
 			$row = mysqli_fetch_array($result_password);
-			if($row['password'] == md5($password)) {
+			if($row['password'] == md5($password) && $row['isClosed'] == 0) {
+				$_SESSION['id'] = $row['id_bin'];
 				$_SESSION['username'] = $row['username'];
 				$_SESSION['fname'] = $row['fname'];
 				$_SESSION['lname'] = $row['lname'];
@@ -43,10 +44,12 @@ if(isset($_POST['signin'])) {
 		mysqli_close($conn);
 
 		if(empty($_SESSION['error'])) {
-			header("location: ./user.php");
+			header("location: ./index.php");
 		} else {
 			header("location: ./form_signin.php");
 		}
 
 	}
+} else {
+	header("location:form_signin.php");
 }

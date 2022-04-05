@@ -11,6 +11,7 @@
 	<title>jBlog</title>
 </head>
 <body>
+	<div class="header-banner" style="height:160px;outline:1px #ccc solid;">ads banner</div>
 	<?php include "./common/header.php" ?>
 	<div class="app">
 		<div class="container">
