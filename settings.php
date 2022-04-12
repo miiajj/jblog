@@ -15,6 +15,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/base.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/header.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/footer.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/settings.css">
 
 	<title>jBlog</title>

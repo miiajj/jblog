@@ -22,14 +22,14 @@ if(isset($_POST['signin'])) {
 		} else if(strcmp($password, "") == 0 || !preg_match($regex_password, $password)) {
 			array_push($_SESSION['error'], "wrong password");
 		} else{
-			$query_identify = "select hex(id_bin) as id_bin, username, password, lname, fname from accounts where username = '$username'";
+			$query_identify = "select hex(id_bin) as id_bin, username, password, lname, fname, role from accounts where username = '$username'";
 			$result_password = mysqli_query($conn, $query_identify);
 			$row = mysqli_fetch_array($result_password);
 			if($row['password'] == md5($password) && $row['isClosed'] == 0) {
 				$_SESSION['id'] = $row['id_bin'];
 				$_SESSION['username'] = $row['username'];
-				$_SESSION['fname'] = $row['fname'];
-				$_SESSION['lname'] = $row['lname'];
+				$_SESSION['name'] = $row['lname'] ." ". $row['fname'];
+				$_SESSION['role'] = $row['role'];
 				if(isset($_POST['remember'])) {
 					$token = uniqid('user_',true);
 					$id_hex = $row['id_bin'];

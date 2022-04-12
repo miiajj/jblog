@@ -45,13 +45,13 @@
 			padding: 8px 16px;
 			margin: 0 8px;
 			border-bottom: 1px transparent solid;
-			&:not( .active):hover {
+			&:not( .active-page):hover {
 				border-bottom: 1px #c69cf4 solid;
 			}
 		}
 	}
 }
-.active {
+.active-page {
 	color: #320a5c;
 	border-bottom: 1px #6c16c7 solid;
 }

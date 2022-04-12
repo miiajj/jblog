@@ -39,13 +39,11 @@
   overflow: hidden;
   outline: 1px #c69cf4 solid;
 }
-.header-ctr__search-input {
-  width: 100%;
-  height: 100%;
+.header-ctr__search > form {
+  display: flex;
 }
-.header-ctr__search-input > input {
+.header-ctr__search > form > input[name=search] {
   width: 100%;
-  height: 100%;
   font-size: 1.5rem;
   padding: 4px 8px;
   outline: none;

@@ -1,8 +1,9 @@
 .footer {
-  height: 220px;
+  height: 212px;
   background-color: rgba(198, 156, 244, 0.08);
   font-size: 1.4rem;
   line-height: 2.4rem;
+  color: #333;
 }
 .footer-logo {
   margin: 12px 0 8px;
@@ -24,19 +25,44 @@
 .footer-item > a {
   color: #000;
 }
+.footer-item > a:hover {
+  opacity: 0.8;
+}
 .footer-item__socials {
   display: flex;
-}
-.footer-item__social {
+  align-items: center;
   margin-left: 16px;
 }
-.footer-app__link {
+.footer-item__social > a {
+  display: inline-block;
+  width: 18px;
+  margin: 4px 16px 0 0;
+}
+.footer-item__social:last-child > a {
+  width: 14px;
+}
+.footer-item__social:first-child > a:hover path {
+  fill: #0f90f3;
+}
+.footer-item__social:nth-child(2) > a:hover path {
+  fill: #f00;
+}
+.footer-app__appstore, .footer-app__chplay {
   color: #000;
   display: block;
-  width: 100px;
-  height: 40px;
+  width: 122px;
+  height: 35px;
   margin: 8px;
-  outline: 1px red solid;
+  border-radius: 6px;
+  background-image: url(/jblog/assets/img/appstore_chplay.jpg);
+  background-repeat: no-repeat;
+  background-size: 146% 204%;
+}
+.footer-app__appstore {
+  background-position: -28px 0px;
+}
+.footer-app__chplay {
+  background-position: -30px -36px;
 }
 
 /*# sourceMappingURL=footer.css.map */

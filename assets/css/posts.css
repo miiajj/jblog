@@ -46,11 +46,11 @@
   margin: 0 8px;
   border-bottom: 1px transparent solid;
 }
-.posts-page__link:not(.active):hover {
+.posts-page__link:not(.active-page):hover {
   border-bottom: 1px #c69cf4 solid;
 }
 
-.active {
+.active-page {
   color: #320a5c;
   border-bottom: 1px #6c16c7 solid;
 }

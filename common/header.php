@@ -3,11 +3,11 @@
 	    session_start();
 	}
 	if(isset($_SESSION['id'])) {
-		$name = $_SESSION['lname'] ." ". $_SESSION['fname'];
+		$name = $_SESSION['name'];
 		$username = $_SESSION['username'];
+		$role = $_SESSION['role'];
 	}
 ?>
-<link rel="stylesheet" type="text/css" href="./assets/css/header.css">
 <script type="text/javascript">
 	function toggle_account() {
   	document.addEventListener("click", function(e) {
@@ -47,19 +47,19 @@
 							Ở đây sẽ để ngày tháng và thời tiết
 						</div>
 						<div class="header-ctr__search">
-							<div class="header-ctr__search-input">
+							<form id="search">
 								<input type="text" name="search" placeholder="Tìm kiếm" size="28">
-							</div>
-							<button class="header-ctr__search-btn">
-								<script src="https://cdn.lordicon.com/lusqsztk.js"></script>
-								<lord-icon
-								    src="https://cdn.lordicon.com/qehhcbpv.json"
-								    trigger="hover"
-								    colors="primary:#4f1091"
-								    state="hover"
-								    style="width:28px;height:28px">
-								</lord-icon>
-							</button>
+								<button type="submit" class="header-ctr__search-btn">
+									<script src="https://cdn.lordicon.com/lusqsztk.js"></script>
+									<lord-icon
+									    src="https://cdn.lordicon.com/qehhcbpv.json"
+									    trigger="hover"
+									    colors="primary:#4f1091"
+									    state="hover"
+									    style="width:28px;height:28px">
+									</lord-icon>
+								</button>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -77,16 +77,21 @@
 									<a class="header-accnt-menu__link" href="#">Trang của bạn</a>
 								</li>
 								<li class="header-accnt-menu__item">
-									<a class="header-accnt-menu__link" href="./form_create_post.php">Tạo bài viết mới</a>
+									<a class="header-accnt-menu__link" href="/jblog/form_create_post.php">Tạo bài viết mới</a>
 								</li>
 								<li class="header-accnt-menu__item">
-									<a class="header-accnt-menu__link" href="./posts.php">Bài viết của bạn</a>
+									<a class="header-accnt-menu__link" href="/jblog/posts.php">Bài viết của bạn</a>
 								</li>
 								<li class="header-accnt-menu__item">
-									<a class="header-accnt-menu__link" href="./settings.php">Cài đặt</a>
+									<a class="header-accnt-menu__link" href="/jblog/settings.php">Cài đặt</a>
 								</li>
+								<?php if ($role == 1): ?>
 								<li class="header-accnt-menu__item">
-									<a class="header-accnt-menu__link" href="./signout.php">Đăng xuất</a>
+									<a class="header-accnt-menu__link" href="/jblog/admin/">Quản lý</a>
+								</li>
+								<?php endif ?>
+								<li class="header-accnt-menu__item">
+									<a class="header-accnt-menu__link" href="/jblog/signout.php">Đăng xuất</a>
 								</li>
 							</ul>
 						</div>
@@ -95,9 +100,9 @@
 						</script>
 						<?php } else { ?>
 						<div>
-							<a class="header-identifer__signin" href="./form_signin.php">Đăng nhập</a>
+							<a class="header-identifer__signin" href="/jblog/form_signin.php">Đăng nhập</a>
 							<span class="slash">/</span>
-							<a class="header-identifer__signup" href="./form_signup.php">Đăng ký</a>
+							<a class="header-identifer__signup" href="/jblog/form_signup.php">Đăng ký</a>
 						</div>
 						<?php } ?>
 					</div>
@@ -154,7 +159,93 @@
 					</div>
 				</div>
 			</div>
-			
 		</div>
 	</div>
 </div>
+<style>
+		.highlight-post, .post-ctn {
+			float: left;
+			line-height: 20px;
+			margin-top: 60px;
+		}
+		.highlight-post {
+			width: 40%;
+			padding: 0 28px 0 20px;
+		}
+		.post-ctn {
+			width: 60%;
+			padding-left:32px;
+			margin-bottom: 120px;
+		}
+		.post {
+			display: flex;
+			margin-bottom: 56px;
+		}
+		.htitle, .title {
+			font-size: 2rem;
+			line-height: 2.4rem;
+			font-weight: 500;
+		  	overflow-wrap: break-word;
+		  	display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
+		.htitle {
+			margin: 16px 0;
+		}
+		.post-ctn__content {
+			margin: 0 16px;
+			width: 100%;
+		}
+		.htitle-photo>img {
+			object-fit: cover;
+			object-position: 50% 50%;
+			width: 100%;
+			height: 240px;
+		}
+		.title-photo {
+			flex-basis: 45%;
+		}
+		.title-photo>img {
+			object-fit: cover;
+			object-position: 50% 50%;
+			height: 160px;
+			width: 100%;
+			min-width: 160px;
+		}
+		.hcontent, .content {
+			color: #333;
+			font-size: 1.6rem;
+			word-break: break-all;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
+		.content {
+			margin-top: 16px;
+		}
+		.post-author {
+			margin-top: 16px;
+			width: 100%;
+			height: 56px;
+			display: flex;
+			background-color: #ccc;
+		}
+	</style>
+	<script>
+		const form = document.getElementById("search");
+		form.addEventListener('submit', loadSearch);
+		function loadSearch(event) {
+			event.preventDefault();
+			const xhttp = new XMLHttpRequest();
+			const search = form.querySelector("input[name=search]").value;
+			xhttp.onload = function() {
+				document.getElementsByClassName("app-ctner")[0].innerHTML = this.responseText;
+			}
+			xhttp.open("GET", "/jblog/search_posts.php?search=" + search, true);
+			xhttp.send();
+		}
+	</script>
+	

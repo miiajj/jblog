@@ -14,7 +14,7 @@
   padding: 12px 24px;
   font-size: 1.6rem;
   border-left: 2px transparent solid;
-  border-right: 1px #000 solid;
+  border-right: 1px #ccc solid;
   color: #333;
   cursor: pointer;
 }

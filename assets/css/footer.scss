@@ -1,8 +1,9 @@
 .footer {
-	height: 220px;
+	height: 212px;
 	background-color: rgba(198,156,244,0.08);
 	font-size: 1.4rem;
 	line-height: 2.4rem;
+	color: #333;
 	&-logo {
 		margin: 12px 0 8px;
 		height: 52px;
@@ -11,7 +12,6 @@
 		background: url('../img/footer-logo.png') no-repeat left center;
 		background-size: 180px 180px;
 		background-origin: border-box;
-
 		&__link {
 			display: block;
 			width: 100%;
@@ -20,22 +20,49 @@
 	}
 	&-item {
 		display: flex;
-		&>a {
+		& > a {
 			color: #000;
+			&:hover {
+				opacity: 0.8;
+			}
 		}
 		&__socials {
 			display: flex;
-		}
-		&__social {
+			align-items: center;
 			margin-left: 16px;
 		}
+		&__social>a {
+			display: inline-block;
+			width: 18px;
+			margin: 4px 16px 0 0;
+		}
+		&__social:last-child>a {
+			width: 14px;
+		}
+		&__social:first-child>a:hover path {
+			fill: #0f90f3;
+		}
+		&__social:nth-child(2)>a:hover path {
+			fill: #f00;
+		}
 	}
-	&-app__link {
-		color: #000;
-		display: block;
-		width: 100px;
-		height: 40px;
-		margin: 8px;
-		outline: 1px red solid;
+	&-app {
+	    &__appstore, &__chplay {
+			color: #000;
+			display: block;
+			width: 122px;
+			height: 35px;
+			margin: 8px;
+			border-radius: 6px;
+			background-image: url(/jblog/assets/img/appstore_chplay.jpg);
+		    background-repeat: no-repeat;
+	    	background-size: 146% 204%;
+	    }
+	    &__appstore {
+	    	background-position: -28px 0px;
+	    }
+	    &__chplay {
+	    	background-position: -30px -36px;
+	    }
 	}
 }

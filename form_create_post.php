@@ -6,7 +6,7 @@
 		header("location: ./form_signin.php");
 	}
 		$id = $_SESSION['id'];
-		$name = $_SESSION['lname'] ." ". $_SESSION['fname'];
+		$name = $_SESSION['name'];
 ?>
 <!DOCTYPE html>
 <html>
