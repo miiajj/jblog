@@ -231,21 +231,23 @@
 			width: 100%;
 			height: 56px;
 			display: flex;
-			background-color: #ccc;
+			background-color: #e5d1fa;
 		}
 	</style>
 	<script>
 		const form = document.getElementById("search");
 		form.addEventListener('submit', loadSearch);
+		const input = form.querySelector("input[name=search]");
 		function loadSearch(event) {
 			event.preventDefault();
 			const xhttp = new XMLHttpRequest();
-			const search = form.querySelector("input[name=search]").value;
+			const search = input.value;
 			xhttp.onload = function() {
-				document.getElementsByClassName("app-ctner")[0].innerHTML = this.responseText;
+				if(this.responseText) {
+					document.getElementsByClassName("app-ctner")[0].innerHTML = this.responseText;
+				}
 			}
 			xhttp.open("GET", "/jblog/search_posts.php?search=" + search, true);
 			xhttp.send();
 		}
 	</script>
-	

@@ -1,5 +1,4 @@
 <?php 
-
 	if (!isset($_SESSION)) {
 	    session_start();
 	}
@@ -7,7 +6,7 @@
 		header("location: ./form_signin.php");
 	}
 	$id = $_SESSION['id'];
-	$name = $_SESSION['lname'] ." ". $_SESSION['fname'];
+	$name = $_SESSION['name'];
 	$post_id = $_GET['id'];
 	require "./conn.php";
 	$query_post = "select * from posts where account_id = unhex('$id') and id = '$post_id'";

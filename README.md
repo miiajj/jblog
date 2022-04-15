@@ -11,4 +11,7 @@ How to run it?
   - Import SQL file into PHPMyAdmin, database name is `jblog`.
   - Start web application on localhost along with port corresponding (ex: localhost:80).
 
+# Incomplete
+Sorry for my incomplete product, and I think I don't intend to complete it because from the beginning I didn't go right in the direction. So, my code is very messy...
 `updating...`
+

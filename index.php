@@ -21,6 +21,7 @@
 	$hcontent = $hpost['content'];
 
 	$posts = mysqli_query($conn, $query_posts);
+	mysqli_close($conn);
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,7 +50,7 @@
 							<div class="htitle-photo">
 								<img src="<?php echo $htitle_photo ?>" width=100% height="200px" alt="title photo">
 							</div>
-							<div class="htitle"><?php echo $htitle ?></div>
+							<div class="htitle"><?php echo htmlentities($htitle) ?></div>
 							<div class="hcontent"><?php echo substr($hcontent,0,360) ?></div>
 							<div class="post-author">
 								<div class="post-author__avt"></div>
@@ -64,8 +65,8 @@
 							<div class="post">
 								<div class="title-photo"><img src="<?php echo $post['title_photo'] ?>" alt="title photo"></div>
 								<div class="post-ctn__content">
-									<div class="title"><?php echo $post['title'] ?></div>
-									<div class="content"><?php echo substr($post['content'],0,360) ?></div>
+									<div class="title"><?php echo htmlentities($post['title']) ?></div>
+									<div class="content"><?php echo htmlentities(substr($post['content'],0,360)) ?></div>
 									<div class="post-author">
 										<div class="post-author__avt"></div>
 										<div class="post-author__name"></div>

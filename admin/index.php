@@ -124,18 +124,22 @@ if($_SESSION['role'] != 1) {
 		let list = document.querySelectorAll('.manager-item');
 		list.forEach((item) => {
 			item.onclick = function() {
+				if(item.classList.contains('active')) {
+					return false;
+				}
 				let actItem = document.querySelector('.manager-item.active').classList.remove('active');
 				let link = this.getAttribute("data") + ".php";
 				getData(link);
 				this.classList.add('active');
 			}
 		})
+
 		function getData(link) {
 		  const xhttp = new XMLHttpRequest();
 		  xhttp.onload = function() {
 		    document.getElementById("manager-details").innerHTML = this.responseText;
 		  }
-		  xhttp.open("GET", link);
+		  xhttp.open("post", link);
 		  xhttp.send();   
 		}
 		function check_empty(type) {

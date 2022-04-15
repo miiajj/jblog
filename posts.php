@@ -6,7 +6,7 @@
 	}
 	$id = $_SESSION['id'];
 	require './conn.php';
-	$query_num_of_posts = "select count(*) from posts where account_id = unhex('$id') and isDeleted = 0";
+	$query_num_of_posts = "select count(*) from posts where isDeleted = 0 and account_id = unhex('$id')";
 	$result = mysqli_query($conn,$query_num_of_posts);
 	$num_of_posts = mysqli_fetch_array($result)["count(*)"];
 	$posts_per_page = 7;
@@ -87,9 +87,9 @@
 									<div class="post-content">
 										  <div class="post-title-photo" style="background-image: url(<?php echo $post["title_photo"] ?>);"></div>
 										  <div class="post-content-ctn">
-											  <div class="post-title" ><?php echo $post["title"] ?></div>
+											  <div class="post-title" ><?php echo htmlentities($post["title"]) ?></div>
 											  <div class="post-create-date"><?php echo $post["created_date"] ?></div>
-											  <div class="post-details"><?php echo substr($post["content"],0,354)  ?></div>
+											  <div class="post-details"><?php echo htmlentities(substr($post["content"],0,354)) ?></div>
 										  </div>
 										  <div class="post-ctrl">
 											  <a href="./form_update_post.php?id=<?php echo $post["id"] ?>">Sửa</a>

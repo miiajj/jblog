@@ -19,6 +19,7 @@ echo "<th style='width:8%;text-align:center'>ID</th>";
 echo "<th style='width:20%;text-align:left'>Category</th>";
 echo "<th style='width:12%;text-align:left'>Quantity</th>";
 echo "<th style='width:8%;text-align:left'>Point</th>";
+echo "<th style='width:8%;text-align:left'></th>";
 echo "</tr>";
 foreach ($ctgs as $ctg) {
 	echo "<tr>";
@@ -26,6 +27,9 @@ foreach ($ctgs as $ctg) {
 	echo "<td>".$ctg["name"]."</td>";
 	echo "<td>".$ctg["quantity"]."</td>";
 	echo "<td>".$ctg["sum"]."</td>";
+	if($ctg["quantity"] == 0) {
+		echo "<td><form method='post' action='delete_category.php'><input name='id' hidden value=".$ctg['id']."><button type='submit'>Delete</button></form></td>";
+	}
 	echo "</tr>";
 }
 echo "</table>";
