@@ -1,5 +1,9 @@
 <?php
 	session_start();
+	if(isset($_SESSION['id'])) {
+		header('location: ./index.php');
+		exit;
+	}
 	if(!empty($_SESSION['error'])) {
 		$error = $_SESSION['error'];
 		unset($_SESSION['error']);
@@ -23,44 +27,93 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="./assets/css/reset.css">
 	<title>Sign Up</title>
 	<style>
-		body {
-			position: relative;
-		}
 		.error {
 			position: absolute;
 			margin-left: 4px;
 			color: red;
+			font-size: 1.6rem;
+		}
+		body,html {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			min-height: 100vh;
+			font-size: 62.5%;
+			position: relative;
+		}
+		.app-ctn {
+			min-width: 600px;
+			width: 45%;
+			padding: 60px 20px;
+			margin: auto;
+			outline: 4px #c70eb5 inset;
+			box-sizing: border-box;
+			font-size: 1.8rem;
+		}
+		label {
+			display: inline-block;
+			width: 98px;
+		}
+		label[for="male"],
+		label[for="female"] {
+			width: unset;
+		}
+		h1 {
+			font-size: 2.8rem;
+			font-weight: 600;
+			margin-bottom: 20px;
+		}
+		a {
+			margin-right: 20px;
+			border-bottom: 1px #c70eb5 solid;
+		}
+		a:hover {
+			opacity: 0.4;
+		}
+		button {
+			border: 1px #c70eb5 solid;
+			background-color: #fff;
+			padding: 8px 16px;
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: #c70eb5;
+			color: #fff;
 		}
 	</style>
 </head>
 <body>
-	<form method="post" action="signup.php">
-		<h1>Signup</h1>
-		<label for="username">Username</label>
-		<input type="text" name="username" id="username" autocomplete="off"><span class="error"><?php if(isset($username_error) && ($username_error === 'wrong username format')){echo $username_error;} if(isset($exist_username) && ($exist_username === 'username already exist')) {echo $exist_username;}?></span><br><br>
-		<label for="password">Password</label>
-		<input type="password" name="password" id="password"><span class="error"><?php if(isset($password_error) && ($password_error === 'wrong password format')){echo $password_error;} ?></span><br><br>
-		<label for="cpassword">Confirm Password</label>
-		<input type="password" name="cpassword" id="cpassword"><span class="error"><?php if(isset($password_not_match) && ($password_error === 'password not match')){echo $password_not_match;} ?></span><br><br>
-		<label for="email">Email</label>
-		<input type="email" name="email" id="email"><span class="error"><?php if(isset($email_error) && ($email_error === 'wrong email format')){echo $email_error;} if(isset($exist_email) && ($exist_email === 'email already exist')) {echo $exist_email;}?></span><br><br>
-		<label for="fname">First Name</label>
-		<input type="text" name="fname" id="fname"><span class="error"><?php if(isset($fname_error) && ($fname_error === 'wrong first name format')){echo $fname_error;} ?></span><br><br>
-		<label for="lname">Last Name</label>
-		<input type="text" name="lname" id="lname"><span class="error"><?php if(isset($lname_error) && ($lname_error === 'wrong last name format')){echo $lname_error;} ?></span><br><br>
-		<label for="dob">Date of Birth</label>
-		<input type="date" name="dob" id="dob"><span class="error"><?php if(isset($dob_error) && ($dob_error === 'wrong date format')){echo $dob_error;} ?></span><br><br>
-		<label>Gender</label>
-		<label for="male">Male</label>
-		<input type="radio" name="gender" id="male" value="1">
-		<label for="female">Female</label>
-		<input type="radio" name="gender" id="female" value="0"><span class="error"></span><br><br>
-		<a style="color:#000;" href="./form_signin.php">Signin here</a>
-		<button type="submit" name="submit" onclick="return validate()">Submit</button><span class="error"><?php if(isset($fillFull_error) && ($fillFull_error === 'not filled full')) {echo $fillFull_error;} ?></span>
-	</form>
-	<noscript>To have a better experience please enable javascript or change to another browser.</noscript>
+	<div class="app-ctn">
+		
+		<form method="post" action="signup.php">
+			<h1>Signup</h1>
+			<label for="username">Username</label>
+			<input type="text" name="username" id="username" autocomplete="off"><span class="error"><?php if(isset($username_error) && ($username_error === 'wrong username format')){echo $username_error;} if(isset($exist_username) && ($exist_username === 'username already exist')) {echo $exist_username;}?></span><br><br>
+			<label for="password">Password</label>
+			<input type="password" name="password" id="password"><span class="error"><?php if(isset($password_error) && ($password_error === 'wrong password format')){echo $password_error;} ?></span><br><br>
+			<label for="cpassword">Confirm Password</label>
+			<input type="password" name="cpassword" id="cpassword"><span class="error"><?php if(isset($password_not_match) && ($password_error === 'password not match')){echo $password_not_match;} ?></span><br><br>
+			<label for="email">Email</label>
+			<input type="email" name="email" id="email"><span class="error"><?php if(isset($email_error) && ($email_error === 'wrong email format')){echo $email_error;} if(isset($exist_email) && ($exist_email === 'email already exist')) {echo $exist_email;}?></span><br><br>
+			<label for="fname">First Name</label>
+			<input type="text" name="fname" id="fname"><span class="error"><?php if(isset($fname_error) && ($fname_error === 'wrong first name format')){echo $fname_error;} ?></span><br><br>
+			<label for="lname">Last Name</label>
+			<input type="text" name="lname" id="lname"><span class="error"><?php if(isset($lname_error) && ($lname_error === 'wrong last name format')){echo $lname_error;} ?></span><br><br>
+			<label for="dob">Date of Birth</label>
+			<input type="date" name="dob" id="dob"><span class="error"><?php if(isset($dob_error) && ($dob_error === 'wrong date format')){echo $dob_error;} ?></span><br><br>
+			<label>Gender</label>
+			<label for="male">Male</label>
+			<input type="radio" name="gender" id="male" value="1">
+			<label for="female">Female</label>
+			<input type="radio" name="gender" id="female" value="0"><span class="error"></span><br><br>
+			<a style="color:#000;" href="./form_signin.php">Signin here</a>
+			<button type="submit" name="submit" onclick="return validate()">Submit</button><span class="error"><?php if(isset($fillFull_error) && ($fillFull_error === 'not filled full')) {echo $fillFull_error;} ?></span>
+		</form>
+		<noscript>To have a better experience please enable javascript or change to another browser.</noscript>
+	</div>
 	<script type="text/javascript">
 		// function insertAfter(referenceNode, newNode) {
 		// 	referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
@@ -120,7 +173,7 @@
 				password_error.innerHTML = "* Password is required!";
 				return false;
 			} else if(!regex_password.test(password.value)) {
-				password_error.innerHTML = "* Password must be a minimum of 8 characters, contain at least 1 number and 1 uppercase";
+				password_error.innerHTML = "* Password must be a minimum of 8 characters,<br> contain at least 1 number and 1 uppercase";
 				return false;
 			}
 			if(password.value !== cpassword.value) {

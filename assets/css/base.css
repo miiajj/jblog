@@ -1,7 +1,7 @@
 /* base on */
 :root {
-  --pri-clr: #320a5c;
   /*320a5c 4f1091 6c16c7 8930e8 a866ee c69cf4 e5d1fa */
+  --pri-clr: #320a5c;
   --opa-pri-clr: rgba(51,71,71,0.4);
   --txt-clr: #333;
 }
@@ -10,79 +10,66 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  outline: 1px #ccc dashed;
 }
 
 .column-12 {
   margin-left: 5px;
   margin-right: 5px;
   width: calc(100% - 10px);
-  outline: 1px red dashed;
 }
 
 .column-6 {
   margin-left: 5px;
   margin-right: 5px;
   width: calc(50% - 10px);
-  outline: 1px red dashed;
 }
 
 .column-5 {
   margin-left: 5px;
   margin-right: 5px;
   width: calc(41.66% - 10px);
-  outline: 1px red dashed;
 }
 
 .column-7 {
   margin-left: 5px;
   margin-right: 5px;
   width: calc(58.33% - 10px);
-  outline: 1px red dashed;
 }
 
 .column-4 {
   margin-left: 5px;
   margin-right: 5px;
   width: calc(33.33% - 10px);
-  outline: 1px red dashed;
 }
 
 .column-8 {
   margin-left: 5px;
   margin-right: 5px;
   width: calc(66.66% - 10px);
-  outline: 1px red dashed;
 }
 
 .column-3 {
   margin-left: 5px;
   margin-right: 5px;
   width: calc(25% - 10px);
-  outline: 1px red dashed;
 }
 
 .column-9 {
   margin-left: 5px;
   margin-right: 5px;
   width: calc(75% - 10px);
-  outline: 1px red dashed;
 }
 
 .column-2 {
   margin-left: 5px;
   margin-right: 5px;
   width: calc(16.66% - 10px);
-  outline: 1px red dashed;
 }
 
 .column-10 {
   margin-left: 5px;
   margin-right: 5px;
   width: calc(83.33% - 10px);
-  outline: 1px red dashed;
 }
 
 .container {
@@ -105,8 +92,8 @@ html {
   font-size: 1.4rem;
   margin-top: 25px;
   margin-bottom: 25px;
-  height: 800px;
-  outline: 1px blue dashed;
+  position: relative;
+  min-height: 400px;
 }
 
 /*# sourceMappingURL=base.css.map */

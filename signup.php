@@ -61,7 +61,13 @@ if (isset($_POST['submit'])) {
 		if(empty($_SESSION['error'])) {
 			$query = "insert into accounts(id_bin,username,email,password,fname,lname,gender,dob) values(unhex(replace(uuid(), '-','')),'$username','$email','" . md5($password) . "',N'$fname',N'$lname',$gender,'$dob')";
 			mysqli_query($conn, $query);
+			require 'mail.php';
+			$title = "Đăng ký thành công tài khoản Jblog";
+			$content = "Chúc mừng bạn đã đăng ký thành công tài khoản Jblog! Chúng tôi sẽ bán thông tin mà bạn cung cấp cho hacker :) Ngu. ";
+			mailler($email, $fname.$lname, $title, $content);
 			$_SESSION['success_signup'] = "Sign up success";
+			// create folder photo
+			mkdir("photos/$username", 0770);
 			header("location: ./form_signin.php");
 		} else {
 			header("location: ./form_signup.php");
